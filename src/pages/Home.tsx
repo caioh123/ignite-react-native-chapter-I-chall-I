@@ -15,6 +15,14 @@ export function Home() {
     ]);
   }
 
+  function handleEditTask(id: number, taskNewTitle: string) {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, title: taskNewTitle } : task
+      )
+    );
+  }
+
   function handleToggleTaskDone(id: number) {
     setTasks(
       tasks.map((task) =>
@@ -37,6 +45,7 @@ export function Home() {
         tasks={tasks}
         toggleTaskDone={handleToggleTaskDone}
         removeTask={handleRemoveTask}
+        editTask={handleEditTask}
       />
     </View>
   );
